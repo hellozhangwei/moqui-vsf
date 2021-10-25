@@ -1,0 +1,19 @@
+{
+  "name": "vsf-integration-docs",
+  "version": "1.0.0-beta.0",
+  "description": "Documentation for <% INTEGRATION %> integration for Vue Storefront",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "https://github.com/vuestorefront/<% INTEGRATION %>/docs",
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "yarn docs:extract && yarn docs:generate && vuepress build",
+    "docs:extract": "cd ../packages/api-client && api-extractor run --local && cd ../composables && api-extractor run --local",
+    "docs:generate": "api-documenter markdown --i api-client --o api-client && api-documenter markdown --i composables --o composables"
+  },
+  "devDependencies": {
+    "@microsoft/api-documenter": "^7.13.58",
+    "@microsoft/api-extractor": "7.18.13",
+    "vuepress": "^1.8.2"
+  }
+}
